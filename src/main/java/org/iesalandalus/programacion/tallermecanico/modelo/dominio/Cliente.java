@@ -32,7 +32,7 @@ public class Cliente {
 
     public void setNombre(String nombre) {
         Objects.requireNonNull(nombre,"El nombre no puede ser nulo.");
-        if (!Pattern.matches(ER_NOMBRE , nombre)) {
+        if (!nombre.matches(ER_NOMBRE)) {
             throw new IllegalArgumentException("El nombre no tiene un formato válido.");
         }
         this.nombre = nombre;
@@ -44,7 +44,7 @@ public class Cliente {
 
     private void setDni(String dni) {
         Objects.requireNonNull(dni,"El DNI no puede ser nulo.");
-        if (!Pattern.matches(ER_DNI, dni)) {
+        if (!dni.matches(ER_DNI)) {
             throw new IllegalArgumentException("El DNI no tiene un formato válido.");
         }
         if (comprobarLetraDni(dni)) {
@@ -71,20 +71,13 @@ public class Cliente {
 
     public void setTelefono(String telefono) {
         Objects.requireNonNull(telefono,"El teléfono no puede ser nulo.");
-        if (!Pattern.matches(ER_TELEFONO, telefono)){
+        if (!telefono.matches(ER_TELEFONO)){
             throw new IllegalArgumentException("El teléfono no tiene un formato válido.");
         }
         this.telefono = telefono;
     }
 
     public static Cliente get(String dni) {
-        Objects.requireNonNull(dni,"El DNI no puede ser nulo.");
-        if (!Pattern.matches(ER_DNI , dni)){
-            throw new IllegalArgumentException("El DNI no tiene un formato válido.");
-        }
-        if (new Cliente("Nombre", dni, "000000000").comprobarLetraDni(dni)){
-            throw new IllegalArgumentException("La letra del DNI no es correcta.");
-        }
         return new Cliente("Temp",dni,"000000000");
     }
 
