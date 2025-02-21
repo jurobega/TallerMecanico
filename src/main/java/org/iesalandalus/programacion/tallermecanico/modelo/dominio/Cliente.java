@@ -1,7 +1,6 @@
 package org.iesalandalus.programacion.tallermecanico.modelo.dominio;
 
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 public class Cliente {
 
