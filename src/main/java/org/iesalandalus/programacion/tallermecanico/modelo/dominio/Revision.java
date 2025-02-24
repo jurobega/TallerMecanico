@@ -123,16 +123,15 @@ public class Revision {
     }
 
     public float getPrecio(){
-        float precio;
-        if (!estaCerrada()) {
-            precio =  0;
-        }else {
-            precio = (horas * PRECIO_HORA) + (getDias() * PRECIO_DIA) + (precioMaterial * PRECIO_MATERIAL);
-        }
-        return precio;
+        float precioFijo = (horas * PRECIO_HORA) + (getDias() * PRECIO_DIA);
+        float precioEspecifico = ( precioMaterial * PRECIO_MATERIAL);
+        return precioFijo + precioEspecifico;
     }
 
     private float getDias() {
+        if (!estaCerrada()){
+            return 0;
+        }
         return ChronoUnit.DAYS.between(fechaInicio , fechaFin);
     }
 
