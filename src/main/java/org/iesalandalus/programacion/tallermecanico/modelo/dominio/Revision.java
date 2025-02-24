@@ -15,9 +15,9 @@ public class Revision {
     public static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private LocalDate fechaInicio;
-    private LocalDate fechaFin;
-    private int horas;
-    private float precioMaterial;
+    private LocalDate fechaFin = null;
+    private int horas = 0;
+    private float precioMaterial = 0;
 
     private Cliente cliente;
     private Vehiculo vehiculo;
