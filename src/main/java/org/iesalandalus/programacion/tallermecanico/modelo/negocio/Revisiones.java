@@ -99,7 +99,7 @@ public class Revisiones {
         Objects.requireNonNull(revision,"No puedo operar sobre una revisión nula.");
         Objects.requireNonNull(fechaFin,"La fecha no puede ser nula.");
         if (fechaFin.isAfter(LocalDate.now())){
-            throw new IllegalArgumentException("La fecha de din no puede ser posterior a la de hoy.");
+            throw new IllegalArgumentException("La fecha de fin no puede ser posterior a la de hoy.");
         }
         Revision revisionExsistente = getRevision(revision);
         if (fechaFin.isBefore(revisionExsistente.getFechaInicio())){
