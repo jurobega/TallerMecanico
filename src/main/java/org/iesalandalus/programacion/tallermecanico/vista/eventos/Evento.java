@@ -1,11 +1,11 @@
-package org.iesalandalus.programacion.tallermecanico.vista;
+package org.iesalandalus.programacion.tallermecanico.vista.eventos;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public enum Opcion {
+public enum Evento {
     INSERTAR_CLIENTE(10,"Insertar Cliente"),
     BUSCAR_CLIENTE(11,"Buscar Cliente"),
     BORRAR_CLIENTE(12,"Borrar Cliente"),
@@ -26,34 +26,34 @@ public enum Opcion {
     CERRAR_REVISION(60,"Cerrar Revision"),
     SALIR(0,"Salir");
 
-    private int numeroOpcion;
-    private String mensaje;
-    private static Map<Integer , Opcion> opciones = new HashMap<>();
+    private int codigo;
+    private String texto;
+    private static Map<Integer , Evento> eventos = new HashMap<>();
 
     static {
-        for (Opcion opcion : values()) {
-            opciones.put(opcion.numeroOpcion, opcion);
+        for (Evento codigo : values()) {
+            eventos.put(codigo.codigo, codigo);
         }
     }
 
-    private Opcion(int numeroOpcion , String mensaje) {
-        this.numeroOpcion = numeroOpcion;
-        this.mensaje = mensaje;
+    private Evento(int codigo , String texto) {
+        this.codigo = codigo;
+        this.texto = texto;
     }
 
-    public static boolean esValida(int numeroOpcion)  {
-        return opciones.containsKey(numeroOpcion);
+    public static boolean esValida(int codigo)  {
+        return eventos.containsKey(codigo);
     }
 
-    public static Opcion get( int numeroOpcion) throws TallerMecanicoExcepcion {
-        if (!esValida(numeroOpcion)) {
-            throw new TallerMecanicoExcepcion("La opcion no es valida.");
+    public static Evento get(int codigo) throws TallerMecanicoExcepcion {
+        if (!esValida(codigo)) {
+            throw new TallerMecanicoExcepcion("El código non es valido.");
         }
-        return opciones.get(numeroOpcion);
+        return eventos.get(codigo);
     }
 
     @Override
     public String toString() {
-        return String.format("%d - %s", numeroOpcion, mensaje);
+        return String.format("%d - %s", codigo, texto);
     }
 }
