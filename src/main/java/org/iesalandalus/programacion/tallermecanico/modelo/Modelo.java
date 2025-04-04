@@ -1,8 +1,6 @@
-package org.iesalandalus.programacion.tallermecanico.modelo.cascada;
+package org.iesalandalus.programacion.tallermecanico.modelo;
 
-import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
-import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Trabajo;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
 
@@ -38,7 +36,7 @@ public interface Modelo {
 
     void borrar(Vehiculo vehiculo) throws TallerMecanicoExcepcion;
 
-    void borrar(Revision revision) throws TallerMecanicoExcepcion;
+    void borrar(Trabajo trabajo) throws TallerMecanicoExcepcion;
 
     List<Cliente> getClientes();
 
