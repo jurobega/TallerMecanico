@@ -4,29 +4,39 @@ import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepci
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.ITrabajos;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Trabajos implements ITrabajos {
-    private static String FICHEROS_TRABAJO = "";
-    private static DateTimeFormatter FORMATO_FECHA;
-    private static String RAIZ = "";
-    private static String TRABAJO = "";
-    private static String CLIENTE = "";
-    private static String VEHICULO = "";
-    private static String FECHA_INICIO = "";
-    private static String FECHA_FIN = "";
-    private static String HORAS = "";
-    private static String PRECIO_MATERIAL = "";
-    private static String TIPO = "";
-    private static String REVISION = "";
-    private static String MECANICO = "";
+    private static final String FICHERO_TRABAJOS = String.format("%s%s%s", "datos", File.separator, "trabajos.xml");
+    private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final String RAIZ = "trabajos";
+    private static final String TRABAJO = "trabajo";
+    private static final String CLIENTE = "cliente";
+    private static final String VEHICULO = "vehiculo";
+    private static final String FECHA_INICIO = "fechaInicio";
+    private static final String FECHA_FIN = "fechaFin";
+    private static final String HORAS = "horas";
+    private static final String PRECIO_MATERIAL = "precioMaterial";
+    private static final String TIPO = "tipo";
+    private static final String REVISION = "revision";
+    private static final String MECANICO = "mecanico";
+
+    private static Trabajos instancia;
 
     private final List<Trabajo> coleccionTrabajos;
 
     public Trabajos() {
         coleccionTrabajos = new ArrayList<>();
+    }
+
+    static Trabajos getInstancia() {
+        if (instancia == null) {
+            instancia = new Trabajos();
+        }
+        return instancia;
     }
 
     @Override

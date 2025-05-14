@@ -10,9 +10,17 @@ import java.util.Objects;
 
 public class Vehiculos implements IVehiculos {
     private final List<Vehiculo> coleccionVehiculo;
+    private static Vehiculos instancia;
 
     public Vehiculos() {
         coleccionVehiculo = new ArrayList<>();
+    }
+
+    static Vehiculos getInstancia() {
+        if (instancia == null) {
+            instancia = new Vehiculos();
+        }
+        return instancia;
     }
 
     @Override

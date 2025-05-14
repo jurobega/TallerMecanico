@@ -10,9 +10,17 @@ import java.util.Objects;
 
 public class Clientes implements IClientes {
     private final List<Cliente> coleccionCliente;
+    private static Clientes instancia;
 
     public Clientes() {
         coleccionCliente = new ArrayList<>();
+    }
+
+    static Clientes getInstancia() {
+        if (instancia == null) {
+            instancia = new Clientes();
+        }
+        return instancia;
     }
 
     @Override
